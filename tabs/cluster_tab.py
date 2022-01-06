@@ -8,13 +8,13 @@ from blurbs.rebalance_blurbs import cluster_weekday_blurb, cluster_weekend_blurb
 
 def create_cluster_tab():
 #------------------------------ Weekday Cluster Images ------------------------------
-        weekday_cluster0 = Image.open('./data/weekday_cluster_images/weekday_cluster_0.png')
-        weekday_cluster1 = Image.open('./data/weekday_cluster_images/weekday_cluster_1.png')
-        weekday_cluster2 = Image.open('./data/weekday_cluster_images/weekday_cluster_2.png')
-        weekday_cluster3 = Image.open('./data/weekday_cluster_images/weekday_cluster_3.png')
-        weekday_cluster4 = Image.open('./data/weekday_cluster_images/weekday_cluster_4.png')
-        weekday_cluster5 = Image.open('./data/weekday_cluster_images/weekday_cluster_5.png')
-        weekday_cluster6 = Image.open('./data/weekday_cluster_images/weekday_cluster_6.png')
+        weekday_cluster0 = Image.open('./data/weekday_cluster_images/weekday_cluster_0t.png')
+        weekday_cluster1 = Image.open('./data/weekday_cluster_images/weekday_cluster_1t.png')
+        weekday_cluster2 = Image.open('./data/weekday_cluster_images/weekday_cluster_2t.png')
+        weekday_cluster3 = Image.open('./data/weekday_cluster_images/weekday_cluster_3t.png')
+        weekday_cluster4 = Image.open('./data/weekday_cluster_images/weekday_cluster_4t.png')
+        weekday_cluster5 = Image.open('./data/weekday_cluster_images/weekday_cluster_5t.png')
+        weekday_cluster6 = Image.open('./data/weekday_cluster_images/weekday_cluster_6t.png')
 
 
 
@@ -51,12 +51,12 @@ def create_cluster_tab():
 
 
         #------------------------------ Weekend Cluster Images------------------------------
-        weekend_cluster0 = Image.open('./data/weekend_cluster_images/weekend_cluster_0.png')
-        weekend_cluster1 = Image.open('./data/weekend_cluster_images/weekend_cluster_1.png')
-        weekend_cluster2 = Image.open('./data/weekend_cluster_images/weekend_cluster_2.png')
-        weekend_cluster3 = Image.open('./data/weekend_cluster_images/weekend_cluster_3.png')
-        weekend_cluster4 = Image.open('./data/weekend_cluster_images/weekend_cluster_4.png')
-        weekend_cluster5 = Image.open('./data/weekend_cluster_images/weekend_cluster_5.png')
+        weekend_cluster0 = Image.open('./data/weekend_cluster_images/weekend_cluster_0t.png')
+        weekend_cluster1 = Image.open('./data/weekend_cluster_images/weekend_cluster_1t.png')
+        weekend_cluster2 = Image.open('./data/weekend_cluster_images/weekend_cluster_2t.png')
+        weekend_cluster3 = Image.open('./data/weekend_cluster_images/weekend_cluster_3t.png')
+        weekend_cluster4 = Image.open('./data/weekend_cluster_images/weekend_cluster_4t.png')
+        weekend_cluster5 = Image.open('./data/weekend_cluster_images/weekend_cluster_5t.png')
 
         #------------------------------ Weekend Cluster DataFrame ------------------------------
         frame_for_weekend_cluster_map = pd.read_csv('./data/frame_for_weekend_cluster_map.csv')
