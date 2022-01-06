@@ -6,10 +6,10 @@ charles_summary = 'Charles has a BS in Mathematics with a minor in Computer Scie
 jung_summary = 'Jung is an apiring data scientist with a BE in Mechanical Engineering from The Cooper Union. In his free time he likes to play basketball.'
 robert_summary = 'Robert is an aspiring Data Scientist with a BS in Chemistry and Mathematics from Binghamton University and a PhD in Computational Chemistry from Stanford University. He pivoted from academia to Data Science with a focus on problem-solving, analytics, and machine learning for technology companies.'
 
-hugh_photo = Image.open('./data/image/hugh.jpg')
-charles_photo = Image.open('./data/image/charles.jpg')
-jung_photo = Image.open('./data/image/jung.jpg')
-robert_photo = Image.open('./data/image/robert.jpg')
+hugh_photo = Image.open('./data/image/hught.jpg')
+charles_photo = Image.open('./data/image/charlest.jpg')
+jung_photo = Image.open('./data/image/jungt.jpg')
+robert_photo = Image.open('./data/image/robertt.jpg')
 
 def create_about_us_tab():
     about_us_tab = dcc.Tab(label = 'About Us',

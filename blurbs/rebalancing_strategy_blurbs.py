@@ -4,11 +4,13 @@ Citibike has live data on bike availability at every station in their dock netwo
 '''
 
 ml_blurb = dcc.Markdown('''
-2 Random Forest Regressor Models were developed to predict bike availability at each station. Each model was trained on the last full year of data collected from May 1, 2018 - April 30, 2019. Features included in both models were day and time, latitude and longitude coordinates, weather data, and the number of docks for each station. Predictions using these models will include weather forecasts for the next 48-hour window.
-Future weather data is only available 48 hours into the future, therefore the model only predicts bike availability for the next 48 hour window.
-The first model used past hourly availability data to create cluster classifications for each dock using a K-Means Model. A weekend cluster classification and weekday cluster classification was used as features in the model. The optimal results for this model are train and test R2 of 0.96 and 0.86, respectively.
-The goal for the second model was to be able to make predictions without the use of prior availability data. As an alternative to the original cluster classifications, the second model used an alternative dock cluster classification method. The new cluster classifications were created using distance to nearest central business district, distance to nearest subway, distance to nearest bus stop, borough, and zip code as features in the K-Means Clustering Model. The new cluster classifications were used as a feature in the random forest model. The optimal results for this model are train and test R^2 of 0.96 and 0.86, respectively.
-Due to lack of computing capacity, performing a sufficiently exhaustive grid search to tune hyperparameters was not feasible given time constraints. As such, both random forest models over fit the training data. Additionally, due to the file size limit of this app, a sub-optimal model was used to make these live predictions on the app.
+A Random Forest Regressor Model was developed to predict bike availability at each station. 
+The model was trained on the last full year of data collected from May 1, 2018 - April 30, 2019. 
+Features included in model were day and time, latitude and longitude coordinates, weather data, the number of docks and dock classification for each station. 
+Stations were classified using a K-Means Model with distance to nearest central business district, distance to nearest subway, distance to nearest bus stop, borough, and zip code as features. 
+Future weather data is only available 48 hours into the future, therefore the model only predicts bike availability for the next 48 hour window. The train and test R^2 values for this model are 0.86 and 0.81, respectively. 
+Due to lack of computing capacity, performing a sufficiently exhaustive grid search to tune hyperparameters was not feasible given time constraints. As such, the random forest model over fit the training data. 
+Additionally, due to the file size limit of this app, a sub-optimal model was used to make these live predictions on the app.
 
 ''')
 

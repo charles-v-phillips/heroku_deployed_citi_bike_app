@@ -10,11 +10,11 @@ from PIL import Image
 
 b1 = html.Button('Button1', id = 'play-button')
 tabs = dcc.Tabs(id = 'tab_bar',value = 'intro_tab', children = [
-                                                                dcc.Tab(label = 'Intro', value = 'intro_tab'),
-                                                                dcc.Tab(label = 'EDA', value = 'eda_tab'),
-                                                                dcc.Tab(label = 'Clustering', value = 'clustering_tab'),
-                                                                dcc.Tab(label = 'Rebalancing', value = 'rebalancing_tab'),
-                                                                dcc.Tab(label = 'Rebalancing ForecastingTool', value = 'rebalancing_strategy_tab'),
+                                                                dcc.Tab(label = 'Introduction', value = 'intro_tab'),
+                                                                dcc.Tab(label = 'Data Analysis', value = 'eda_tab'),
+                                                                dcc.Tab(label = 'Usage Patterns', value = 'clustering_tab'),
+                                                                dcc.Tab(label = 'Current Rebalancing', value = 'rebalancing_tab'),
+                                                                dcc.Tab(label = 'Rebalancing Forecasting Tool', value = 'rebalancing_strategy_tab'),
                                                                 dcc.Tab(label = 'Conclusion', value = 'conclusion_tab'),
                                                                 dcc.Tab(label = 'About Us', value = 'about_us_tab')
 
@@ -34,6 +34,9 @@ tabs = dcc.Tabs(id = 'tab_bar',value = 'intro_tab', children = [
 layout = html.Div([
     html.H1('Citi Bike Capstone Project'),
     tabs,
-    html.Div(id='content')
+    dcc.Loading(id = 'loading',
+                type = 'default',
+                style = {'position' : 'absolute','top': '50px'},
+                children = [html.Div(id='content')])
 
 ])

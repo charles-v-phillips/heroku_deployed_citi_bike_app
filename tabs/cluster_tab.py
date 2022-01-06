@@ -88,8 +88,8 @@ def create_cluster_tab():
 
 
 
-        rebalancing_times = Image.open('./data/robert/phantom_rides_time_of_day.png')
-        rebalancing_distances = Image.open('./data/robert/phantom_rides_distances.png')
+        # rebalancing_times = Image.open('./data/robert/phantom_rides_time_of_day.png')
+        # rebalancing_distances = Image.open('./data/robert/phantom_rides_distances.png')
 
         cluster_tab = dcc.Tab(label = 'Station Usage Patterns',value = 'station_usage',
                 children = [
