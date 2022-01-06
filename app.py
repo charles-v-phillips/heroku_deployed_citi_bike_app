@@ -55,21 +55,27 @@ def foo(value):
     if value == 'intro_tab':
         print('rendering_intro_tab')
         return [create_intro_tab()]
+
     if value == 'eda_tab':
         print('rendering eda tab')
         return [create_eda_tab()]
+
     if value == 'clustering_tab':
         print('rendering clustering tab')
         return [create_cluster_tab()]
+
     if value == 'rebalancing_tab':
         print('rendering rebalancing tab')
         return [create_rebalancing_tab()]
+
     if value == 'conclusion_tab':
         print('rendering rebalancing tab')
         return [create_conclusion_tab()]
+
     if value == 'rebalancing_strategy_tab':
          print('rendering rebalancing tab')
          return [create_rebalancing_strategy_tab()]
+         
     if value == 'about_us_tab':
         print('rendering about us tab')
         return [create_about_us_tab()]
