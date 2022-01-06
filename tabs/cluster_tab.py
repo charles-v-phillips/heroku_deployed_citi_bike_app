@@ -4,8 +4,7 @@ import plotly.express as px
 import pandas as pd
 import numpy as np
 from dash import dcc, html
-from blurbs.rebalance_blurbs import cluster_weekday_blurb, cluster_weekend_blurb, rebalance_time_blurb,\
-rebalance_dist_blurb, rebalance_3d_weekday_blurb,rebalance_3d_weekend_blurb
+from blurbs.rebalance_blurbs import cluster_weekday_blurb, cluster_weekend_blurb
 
 def create_cluster_tab():
 #------------------------------ Weekday Cluster Images ------------------------------
