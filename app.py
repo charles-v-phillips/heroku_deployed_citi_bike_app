@@ -1,3 +1,9 @@
+from tabs.cluster_tab import create_cluster_tab
+from tabs.eda_tab import create_eda_tab
+from tabs.intro_tab import create_intro_tab
+from tabs.rebalancing_tab import create_rebalancing_tab
+
+
 
 #-------------------- PACKAGES -------------------------
 import dash
@@ -37,27 +43,46 @@ server = app.server
 
 # ------------------- CALLBACKS ------------------------------
 
-# @app.callback(
-#     [
-#         Output(component_id='rollout_map',component_property='figure'),
-#         Input(component_id='slider',component_property='value')
-#     ]
-# )
-# def update_plot(rollout):
-#     copy = rollout_data.copy()
-#     copy = copy[copy['rollout_cluster'].isin([str(i) for i in range(2013,rollout+1)])]
 
-#     map = px.scatter_mapbox(copy,
-#                             lat='latitude',
-#                             lon='longitude',
-#                             color='rollout_cluster',
-#                             mapbox_style='carto-positron',
-#                             zoom=11,
-#                             center=dict(lat=40.76421, lon=-73.95623)
-#                             )
-#     map.update_traces(marker={'size': 10})
+@app.callback(
+    Output(component_id='content',component_property='children'),
+    Input(component_id='tab_bar', component_property = 'value')
+)
+def foo(value):
+    if value == 'intro_tab':
+        print('rendering_intro_tab')
+        return [create_intro_tab()]
+    if value == 'eda_tab':
+        print('rendering eda tab')
+        return [create_eda_tab()]
+    if value == 'clustering_tab':
+        print('rendering clustering tab')
+        return [create_cluster_tab()]
+    if value == 'rebalancing_tab':
+        print('rendering rebalancing tab')
+        return [create_rebalancing_tab()]
 
-#     return [map]
+@app.callback(
+    [
+        Output(component_id='rollout_map',component_property='figure'),
+        Input(component_id='slider',component_property='value')
+    ]
+)
+def update_plot(rollout):
+    copy = rollout_data.copy()
+    copy = copy[copy['rollout_cluster'].isin([str(i) for i in range(2013,rollout+1)])]
+
+    map = px.scatter_mapbox(copy,
+                            lat='latitude',
+                            lon='longitude',
+                            color='rollout_cluster',
+                            mapbox_style='carto-positron',
+                            zoom=11,
+                            center=dict(lat=40.76421, lon=-73.95623)
+                            )
+    map.update_traces(marker={'size': 10})
+
+    return [map]
 
 
 # @app.callback(

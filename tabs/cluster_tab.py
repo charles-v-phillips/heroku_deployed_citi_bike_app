@@ -161,5 +161,3 @@ def create_cluster_tab():
                 ])
                 ])
         return cluster_tab
-
-cluster_tab = create_cluster_tab()

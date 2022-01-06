@@ -77,101 +77,102 @@ rebalancing_distances = Image.open('./data/robert/phantom_rides_distances.png')
 TOOLTIP_TEXT = {"html": "{count} bikes moved from {end_station}<br />\
                  to {next_station}"}
 
+def create_rebalancing_tab():
+       rebalancing_tab =\
+       dcc.Tab(label='Current Rebalancing',
+              value='rebalancing',
+              children = [
+              #Weekday Rebalancing Div
+              html.Div(children=[
+                                   html.Div(dash_deck.DeckGL(weekday_rebalanced_plot,
+                                                               style = {'height' : '100%',"position": 'relative'},
+                                                               id='deck-gl',
+                                                               tooltip=TOOLTIP_TEXT,
+                                                               mapboxKey=mapbox_key),
+                                                 style={'width': '60%',
+                                                        'height' : '100%',
+                                                        'display': 'inline-block'}),
 
-rebalancing_tab =\
-dcc.Tab(label='Current Rebalancing',
-        value='rebalancing',
-        children = [
-            #Weekday Rebalancing Div
-            html.Div(children=[
-                                html.Div(dash_deck.DeckGL(weekday_rebalanced_plot,
-                                                          style = {'height' : '100%',"position": 'relative'},
-                                                          id='deck-gl',
-                                                          tooltip=TOOLTIP_TEXT,
-                                                          mapboxKey=mapbox_key),
+                                   html.Div(children =[
+                                                 html.H2('Weekday Rebalancing'),
+                                                 html.Div(rebalance_3d_weekday_blurb,style = {'font-size':'1vw'})],
+                                          style={'width': '30%',
+                                                 'display': 'inline-block',
+                                                 'vertical-align': 'top',
+                                                 'margin-left': '4%',
+                                                 # "maxHeight": "400px",
+                                                 "overflow": "scroll"})
+                                   ],
+                            style = {'height' : '45vh','margin-top':'2%'}),
+
+
+              html.Div('*For each arc, the bike starts at the green side and move to the red side'),
+              html.Div('**Arc thickness is proportional to quantities of bikes moved'),
+              #Weekend Rebalancing Div
+              html.Div(children=[
+                                   html.Div(dash_deck.DeckGL(weekend_rebalanced_plot,
+                                                               style = {'height' : '100%',"position": 'relative'},
+                                                               id='deck-gl2',
+                                                               tooltip=TOOLTIP_TEXT,
+                                                               mapboxKey=mapbox_key),
                                           style={'width': '60%',
                                                  'height' : '100%',
                                                  'display': 'inline-block'}),
 
-                                html.Div(children =[
-                                            html.H2('Weekday Rebalancing'),
-                                            html.Div(rebalance_3d_weekday_blurb,style = {'font-size':'1vw'})],
-                                         style={'width': '30%',
-                                                'display': 'inline-block',
-                                                'vertical-align': 'top',
-                                                'margin-left': '4%',
-                                                # "maxHeight": "400px",
-                                                "overflow": "scroll"})
-                                ],
-                        style = {'height' : '45vh','margin-top':'2%'}),
-
-
-            html.Div('*For each arc, the bike starts at the green side and move to the red side'),
-            html.Div('**Arc thickness is proportional to quantities of bikes moved'),
-            #Weekend Rebalancing Div
-            html.Div(children=[
-                                html.Div(dash_deck.DeckGL(weekend_rebalanced_plot,
-                                                          style = {'height' : '100%',"position": 'relative'},
-                                                          id='deck-gl2',
-                                                          tooltip=TOOLTIP_TEXT,
-                                                          mapboxKey=mapbox_key),
-                                         style={'width': '60%',
-                                                'height' : '100%',
-                                                'display': 'inline-block'}),
-
-                                html.Div(children = [
-                                                html.H2('Weekend Rebalancing'),
-                                                html.Div(rebalance_3d_weekend_blurb,style = {'font-size':'1vw'})],
-                                         style={'width': '30%',
-                                                'display': 'inline-block',
-                                                'vertical-align': 'top',
-                                                'margin-left': '4%'})],
-                     style = {'height' : '45vh','margin-top':'2%'}),
-
-
-            html.Div('*For each arc, the bike starts at the green side and move to the red side'),
-            html.Div('**Arc thickness is proportional to quantities of bikes moved'),
-            
-            #    #Rebalancing Times Div
-               html.Div(children=[
-                                  html.Div(children =[
-                                                      html.Img(id = 'rebalancing_times',
-                                                               src = rebalancing_times,
-                                                               style = {"height": "68vh",
-                                                                        "width": "auto"})],
-                                            style={'width': '55%',
-                                                   'height' : '100%',
-                                                   'display': 'inline-block'}),
-                                 html.Div(children = [
-                                                      html.H1('Distribution of Rebalanced Trip Times'),
-                                                      html.Div(rebalance_time_blurb,style = {'font-size':'1vw'})],
-                                          style={'width': '43%',
-                                                 'margin-left' : '2%',
-                                                 'height' : '100%',
+                                   html.Div(children = [
+                                                 html.H2('Weekend Rebalancing'),
+                                                 html.Div(rebalance_3d_weekend_blurb,style = {'font-size':'1vw'})],
+                                          style={'width': '30%',
                                                  'display': 'inline-block',
-                                                 'vertical-align': 'top'})
-                ]),
-            #
-            #
-            #
-            #    # Rebalancing Distances Tab
-               html.Div(children=[
-                                  html.Div(children=[
-                                                     html.Img(id = 'rebalancing_distances',
-                                                     src = rebalancing_distances,
-                                                    style = {"height": "68vh",
-                                                             "width": "auto"})],
-                                            style={'width': '55%',
-                                                   'height' : '100%',
-                                                   'display': 'inline-block'}),
-                                  html.Div(children=[
-                                                    html.H1('Distribution of Rebalance Trip Distance'),
-                                                    html.Div(rebalance_dist_blurb,style = {'font-size':'1vw'})],
-                                            style={'width': '43%',
-                                                   'margin-left' : '2%',
-                                                   'height' : '100%',
-                                                   'display': 'inline-block',
-                                                   'vertical-align': 'top'})
-                ])
+                                                 'vertical-align': 'top',
+                                                 'margin-left': '4%'})],
+                            style = {'height' : '45vh','margin-top':'2%'}),
 
-])
+
+              html.Div('*For each arc, the bike starts at the green side and move to the red side'),
+              html.Div('**Arc thickness is proportional to quantities of bikes moved'),
+              
+              #    #Rebalancing Times Div
+                     html.Div(children=[
+                                   html.Div(children =[
+                                                        html.Img(id = 'rebalancing_times',
+                                                                      src = rebalancing_times,
+                                                                      style = {"height": "68vh",
+                                                                             "width": "auto"})],
+                                                 style={'width': '55%',
+                                                        'height' : '100%',
+                                                        'display': 'inline-block'}),
+                                   html.Div(children = [
+                                                        html.H1('Distribution of Rebalanced Trip Times'),
+                                                        html.Div(rebalance_time_blurb,style = {'font-size':'1vw'})],
+                                                 style={'width': '43%',
+                                                        'margin-left' : '2%',
+                                                        'height' : '100%',
+                                                        'display': 'inline-block',
+                                                        'vertical-align': 'top'})
+                     ]),
+              #
+              #
+              #
+              #    # Rebalancing Distances Tab
+                     html.Div(children=[
+                                   html.Div(children=[
+                                                        html.Img(id = 'rebalancing_distances',
+                                                        src = rebalancing_distances,
+                                                        style = {"height": "68vh",
+                                                               "width": "auto"})],
+                                                 style={'width': '55%',
+                                                        'height' : '100%',
+                                                        'display': 'inline-block'}),
+                                   html.Div(children=[
+                                                        html.H1('Distribution of Rebalance Trip Distance'),
+                                                        html.Div(rebalance_dist_blurb,style = {'font-size':'1vw'})],
+                                                 style={'width': '43%',
+                                                        'margin-left' : '2%',
+                                                        'height' : '100%',
+                                                        'display': 'inline-block',
+                                                        'vertical-align': 'top'})
+                     ])
+
+       ])
+       return rebalancing_tab
