@@ -9,8 +9,7 @@ The model was trained on the last full year of data collected from May 1, 2018 -
 Features included in model were day and time, latitude and longitude coordinates, weather data, the number of docks and dock classification for each station. 
 Stations were classified using a K-Means Model with distance to nearest central business district, distance to nearest subway, distance to nearest bus stop, borough, and zip code as features. 
 Future weather data is only available 48 hours into the future, therefore the model only predicts bike availability for the next 48 hour window. The train and test R^2 values for this model are 0.86 and 0.81, respectively. 
-Due to lack of computing capacity, performing a sufficiently exhaustive grid search to tune hyperparameters was not feasible given time constraints. As such, the random forest model over fit the training data. 
-Additionally, due to the file size limit of this app, a sub-optimal model was used to make these live predictions on the app.
+Due to lack of computing capacity, performing a sufficiently exhaustive grid search to tune hyperparameters was not feasible given time constraints. As such, the random forest model over fit the training data.
 
 ''')
 
